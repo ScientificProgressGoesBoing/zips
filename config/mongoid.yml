@@ -133,7 +133,7 @@ test:
         - localhost:27017
       options:
         read:
-          mode: :primary
+          mode: primary
         max_pool_size: 1
 production:
   clients:
@@ -141,3 +141,5 @@ production:
       uri: <%= ENV['MONGOLAB_URI'] %>
       options:
         connect_timeout: 15        
+        user: <%= ENV['MONGOLAB_USER'] %>
+        password: <%= ENV['MONGOLAB_PASSWORD'] %>
