@@ -1,16 +1,25 @@
 development:
-  # Configure available database clients. (required)
   clients:
-    # Defines the default client. (required)
     default:
-      # Defines the name of the default database that Mongoid can connect to.
-      # (required).
-      database: zips_development
-      # Provides the hosts the default client can connect to. Must be an array
-      # of host:port pairs. (required)
-      hosts:
-        - localhost:27017
+      uri: <%= ENV['MONGOLAB_URI'] %>
+      # uri: 'mongodb://admin:5;;5;;5@ds023418.mlab.com:23418/jhu_zips'
       options:
+        connect_timeout: 15
+        # user: <%= ENV['MONGOLAB_USER'] %>
+        # password: <%= ENV['MONGOLAB_PASSWORD'] %>
+
+  # Configure available database clients. (required)
+  # clients:
+  #   # Defines the default client. (required)
+  #   default:
+  #     # Defines the name of the default database that Mongoid can connect to.
+  #     # (required).
+  #     database: zips_development
+  #     # Provides the hosts the default client can connect to. Must be an array
+  #     # of host:port pairs. (required)
+  #     hosts:
+  #       - localhost:27017
+  #     options:
         # Change the default write concern. (default = { w: 1 })
         # write:
         #   w: 1
@@ -140,6 +149,8 @@ production:
     default:
       uri: <%= ENV['MONGOLAB_URI'] %>
       options:
-        connect_timeout: 15        
-        user: <%= ENV['MONGOLAB_USER'] %>
-        password: <%= ENV['MONGOLAB_PASSWORD'] %>
+        connect_timeout: 15
+        # user: <%= ENV['MONGOLAB_USER'] %>
+        # password: <%= ENV['MONGOLAB_PASSWORD'] %>
+        skip_version_check: true
+        safe: true
